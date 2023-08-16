@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+    <a href="{% url 'create_book' %}">Add Book</a>
+    <ul>
+        {% for book in books %}
+            <li>title: {{ book.title}}</li>
+            <p>author: {{ book.author }}</p>
+            <p>year: {{ book.year }}</p>
+            <p>genre: {{ book.year }}</p>
+            {% if book.borrowed  %}
+                <p style="color: red"><b>BORROWED</b></p>
+            {% endif %}
+            <a href="{% url 'update_book' book.pk %}">Edit</a>
+            <a href="{% url 'delete_book' book.pk %}">Delete</a>
+            <hr>
+        {% endfor %}
+    </ul>
+</body>
+</html>
